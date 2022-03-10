@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Ultra&display=swap');
 html *{
   /* border: 1px solid green; */
+  padding: 0;
+  margin: 0;
 }
 
 body {
@@ -16,6 +18,7 @@ body {
 
 .wrapper{
   /* border: 1px solid red; */
+  height: auto;
 }
 .container{
     position: relative;
@@ -41,21 +44,22 @@ body {
 }
 
 .hero--secondary {
-	--mask: radial-gradient(circle at var(--x, 70%) var(--y, 50%), black 25%, transparent 0);
+	--mask: radial-gradient(circle at var(--x, 40%) var(--y, 10%), black 25%, transparent 0);
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	/* background: linear-gradient(45deg, #40e0d0, #9932cc, #ff1493, orange); */
-  background-color: orange;
+	/* background: linear-gradient(45deg, #ffb01d, #eb3361, #ff1493, orange); */
+  /* background-color: orange; */
+  background: rgba(255, 159, 33, 0.82);
 	color: rgb(9, 14, 23);
 	-webkit-mask-image: var(--mask);
 	mask-image: var(--mask);
 }
 
 .hero__heading {
-	font-size: clamp(2rem, 5vw, 8rem);
+	font-size: clamp(3rem, 6vw, 9rem);
   text-align: left;
 	/* text-transform: uppercase; */
 	margin: 0;

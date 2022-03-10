@@ -1,5 +1,5 @@
 import './App.css';
-import Home from './Components/Home';
+import Home from './components/Home';
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,7 +13,7 @@ function App() {
     <Router>
       
       <div className="App">
-
+        
           <Switch>
             <Route exact path="/">
               <Home />
