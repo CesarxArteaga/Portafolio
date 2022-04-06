@@ -1,27 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Ultra&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
 html *{
-  /* border: 1px solid green; */
   padding: 0;
   margin: 0;
 }
 
 body {
   text-align: center;
-  background-color: #FCDEC0;
-  /* width: 100% !important; */
-  min-height: 100vh !important;
+  background-color: #fddcc1;
   color: #FFF;
   margin: 0;
   padding: 0;
-  /* border: 1px solid blue; */
 }
 
 .wrapper{
-  /* border: 1px solid red; */
-  height: auto;
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  /* align-items: center; */
 }
-.container{
-    position: relative;
+.Interactive_View{
+  position: absolute;
+  box-sizing: border-box;
 }
 .dot {
   position: absolute;
@@ -32,15 +34,7 @@ body {
   will-change: transform;
 }
 .hero {
-	min-height: 100vh;
-/* 	padding: clamp(1rem, 2vw, 5rem); */
-  position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	/* display: flex; */
-	/* align-items: center; */
+	padding: 1rem;
 }
 
 .hero--secondary {
@@ -53,27 +47,31 @@ body {
 	/* background: linear-gradient(45deg, #ffb01d, #eb3361, #ff1493, orange); */
   /* background-color: orange; */
   background: rgba(255, 159, 33, 0.82);
-	color: rgb(9, 14, 23);
+	color: #2e6933;
 	-webkit-mask-image: var(--mask);
 	mask-image: var(--mask);
 }
 
 .hero__heading {
-	font-size: clamp(3rem, 6vw, 9rem);
+	/* font-size: clamp(3rem, 6vw, 9rem); */
+  font-size: 6em;
   text-align: left;
 	/* text-transform: uppercase; */
 	margin: 0;
   font-weight: 400;
-  font-family: 'Ultra', serif;
+  /* font-family: 'Ultra', serif; */
+  font-family: 'Staatliches', cursive;
+  color: #201a1a;
   /* display: block;
   width: 100% ; */
 }
 .hero .hero__heading, .hero .hero--secondary, .hero .menu{
-  transform: translateY(40vh);
+  /* transform: translateY(40vh); */
 }
 .menu{
   display: block;
   width: 100%;
+  z-index: 10000;
 }
 .menu ul{
   display: inline;
@@ -83,6 +81,27 @@ body {
   list-style: none;
   padding-left: 10px;
 }
+
+.menuH{
+  position: absolute;
+  z-index: 1000;
+  top: -5px;
+  right: 50px;
+ color: #201a1a;
+ transform: scaleX(2);
+}
+.menuH:hover{
+  cursor: pointer;
+}
+
+
+.Menu{
+  position: fixed;
+  background-color: #201a1a;
+  width: 100%;
+  height: 100%;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
