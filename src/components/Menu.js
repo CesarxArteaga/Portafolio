@@ -27,7 +27,7 @@ const Menu = () => {
         const target = e.target;
         gsap.to(target, {
             keyframes: [
-                { scaleX: 1, scaleY: 0.7, duration: 0.2, ease: "power2.out" },
+                { scaleX: 1.3, scaleY: 0.8, duration: 0.2, ease: "power2.out" },
                 { scaleX: 2, scaleY: 1, duration: 0.8, ease: "elastic.out(2, 0.5)" }
             ]
         })
@@ -36,20 +36,14 @@ const Menu = () => {
 
     return (
 
-        <>
-
-            <span className="menuH" style={{ fontSize: 90 }} onClick={showMenu} onMouseEnter={textEffect}>
+        <div>
+            <span className="text-blue-600 lg:text-[60px] scale-x-150 pointer" onClick={showMenu}>
                 ☰
             </span>
 
-
             <div className="Menu">
-
-
             </div>
-
-
-        </>
+        </div>
     )
 
 }

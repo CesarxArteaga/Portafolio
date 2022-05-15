@@ -1,112 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Ultra&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-html *{
+@font-face {
+  font-family: "Denike-Regular";
+  src: local("Denike-Regular"),
+    url("./assets/fonts/Denike-Regular.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Asset&display=swap');
+
+.ultra {
+  font-family: 'Asset', cursive;
+}
+
+html * {
   padding: 0;
   margin: 0;
 }
 
 body {
-  text-align: center;
-  background-color: #fddcc1;
-  color: #FFF;
+  background-color: #FFF9E5;
   margin: 0;
   padding: 0;
 }
 
-.wrapper{
-  box-sizing: border-box;
-  display: flex;
-  width: 100%;
-  height: 100vh;
-  /* align-items: center; */
-}
-.Interactive_View{
+.main-svg {
   position: absolute;
-  box-sizing: border-box;
-}
-.dot {
-  position: absolute;
-  /* background-color: #91e600; */
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  will-change: transform;
-}
-.hero {
-	padding: 1rem;
-}
-
-.hero--secondary {
-	--mask: radial-gradient(circle at var(--x, 40%) var(--y, 10%), black 25%, transparent 0);
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	/* background: linear-gradient(45deg, #ffb01d, #eb3361, #ff1493, orange); */
-  /* background-color: orange; */
-  background: rgba(255, 159, 33, 0.82);
-	color: #2e6933;
-	-webkit-mask-image: var(--mask);
-	mask-image: var(--mask);
-}
-
-.hero__heading {
-	/* font-size: clamp(3rem, 6vw, 9rem); */
-  font-size: 6em;
-  text-align: left;
-	/* text-transform: uppercase; */
-	margin: 0;
-  font-weight: 400;
-  /* font-family: 'Ultra', serif; */
-  font-family: 'Staatliches', cursive;
-  color: #201a1a;
-  /* display: block;
-  width: 100% ; */
-}
-.hero .hero__heading, .hero .hero--secondary, .hero .menu{
-  /* transform: translateY(40vh); */
-}
-.menu{
-  display: block;
-  width: 100%;
-  z-index: 10000;
-}
-.menu ul{
-  display: inline;
-}
-.menu ul li{
-  float: left;
-  list-style: none;
-  padding-left: 10px;
-}
-
-.menuH{
-  position: absolute;
-  z-index: 1000;
-  top: -5px;
-  right: 50px;
- color: #201a1a;
- transform: scaleX(2);
-}
-.menuH:hover{
-  cursor: pointer;
-}
-
-
-.Menu{
-  position: fixed;
-  background-color: #201a1a;
-  width: 100%;
-  height: 100%;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  text-shadow: 2px 2px 8px #FF0000;
+  bottom: 0;
+  right: 0;
+  padding: 1rem;
 }

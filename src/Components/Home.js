@@ -1,16 +1,16 @@
 import React from 'react';
-import '../App.css';
 import {
     Link,
 } from "react-router-dom";
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from "gsap";
 import { PixiPlugin } from "gsap/PixiPlugin.js";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin.js";
 import Matter from 'matter-js'
 import Two from "two.js";
 import Menu from './Menu';
-
+import shape from '../assets/images/shape.svg'
+import shape2 from '../assets/images/shape2.svg'
 
 
 //without this line, PixiPlugin and MotionPathPlugin may get dropped by your bundler (tree shaking)...
@@ -46,25 +46,25 @@ function Home() {
         type: Two.Types.canvas,
         fullscreen: true,
         autostart: true,
-    }).appendTo(document.body.firstElementChild)
-
+    })/* .appendTo(document.body.firstElementChild)
+ */
 
     useEffect(() => {
+        //Rotacion de figura amarilla
+        const shape_ = document.querySelector('.shape');
+        gsap.to(shape_, 10, { rotation: 360, ease: 'none', repeat: -1 });
 
-
+        //Animacion de Nombre - Loop
+        const spans = document.querySelector('.title').children;
         const interval = setInterval(() => {
-            const spans = document.querySelector('.hero__heading').children;
             console.log('This will run every second!', spans);
-
-
             for (let i = 0; i < spans.length; i++) {
                 // Do stuff
-                const mouseoverEvent = new Event('mouseover');
-                spans[i].dispatchEvent(mouseoverEvent);
+                (function (i) {
+                    setTimeout(function () { animateLetter(spans[i]); }, i * 30);
+                })(i);
             }
-
-
-        }, 5000);
+        }, 6000);
         return () => clearInterval(interval);
     }, []);
 
@@ -94,7 +94,8 @@ function Home() {
     bounds.bottom = createBoundary(bounds.length, bounds.thickness);
 
     Matter.World.add(solver.world, [
-  /*bounds.top.entity,*/ bounds.left.entity,
+        //bounds.top.entity, 
+        bounds.left.entity,
         bounds.right.entity,
         bounds.bottom.entity,
     ]);
@@ -121,31 +122,6 @@ function Home() {
     two.bind("resize", resize).bind("update", update);
 
 
-
-
-    /* 
-    useEffect(() => {
-        let Engine = Matter.Engine
-        let Render = Matter.Render
-        let World = Matter.World
-        let Bodies = Matter.Bodies
-
-        let engine = Engine.create({})
-
-        let render = Render.create({
-            element: boxRef.current,
-            engine: engine,
-            canvas: canvasRef.current,
-            options: {
-                width: 300,
-                height: 300,
-                background: 'rgba(255, 0, 0, 0.5)',
-                wireframes: false,
-            },
-        })
-    }, []) */
-
-
     //TextEffect
     const textEffect = (e) => {
         const target = e.target;
@@ -159,7 +135,7 @@ function Home() {
 
     //Nombre Apellido - Efecto de Animacion
     const array = ["C", "é", "s", "a", "r"];
-    const array2 = ["A", "r", "t", "e", "a", "g", "a"];
+    const array2 = ["A", "r", "t", "e", "a", "g", "a", "*"];
     const mainName = array.map((letter, index) => (
         <span key={index} style={{ position: 'relative', display: 'inline-block' }} onMouseEnter={textEffect} >{letter}</span>
     ))
@@ -300,7 +276,7 @@ function Home() {
                 "," +
                 Math.floor(Math.random() * 255) +
                 "," +
-                0.8 +
+                0.9 +
                 ")";
             rectangle.noStroke();
             // rectangle.opacity = 0.75;
@@ -359,46 +335,29 @@ function Home() {
 
 
     return (
-        <div className="wrapper">
-
-
-            <Menu />
-
-
-            <div className="hero">
-                <h1 className="hero__heading">{mainName}  {mainLastName} </h1>
-                {/* <h1 className="menu">
-                    <ul>
-                        <li  >
-                            <Link onMouseEnter={textEffect} to="/">Home</Link>
-                        </li>
-                        <li>
-                            <Link onMouseEnter={textEffect} to="/about">About</Link>
-                        </li>
-                        <li>
-                            <Link onMouseEnter={textEffect} to="/dashboard">Dashboard</Link>
-                        </li>
-                    </ul>
-                </h1> */}
+        <div className='relative h-screen'>
+            <div className='md:hidden p-4 w-full border-b border-blue-600 overflow-x-auto'>
+                <a className='ultra text-blue-600 mx-4 text-md'>Trabajos</a>
+                <a className='ultra text-blue-600 mx-4 text-md'>Experimentos</a>
+                <a className='ultra text-blue-600 mx-4 text-md'>Acerca</a>
             </div>
-
-            {/* <div className="hero hero--secondary" aria-hidden="true" data-hero>
-                <h1 className="hero__heading" >{mainName} {mainLastName} </h1>
-                <div className="menu">
-                    <ul>
-                        <li>
-                            <Link to="/">Home</Link>
-                        </li>
-                        <li>
-                            <Link to="/about">About</Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard">Dashboard</Link>
-                        </li>
-                    </ul>
-                </div>
-            </div> */}
-        </div >
+            <div className='p-2 md:p-4 flex flex-row justify-between'>
+                <h1 className="title ultra text-4xl md:text-6xl lg:text-8xl text-blue-600">{mainName} <br />  {mainLastName} </h1>
+            </div>
+            <div className='flex flex-col p-2 md:p-4'>
+                <span className='bg-blue-600 text-white italic text-3xl font-Denike-Regular capitalize border-b border-white-900 text-bolder w-fit'>web designer_&nbsp;</span>
+                <span className='bg-blue-600 text-white italic text-3xl font-Denike-Regular capitalize border-b border-white-900 text-bolder w-fit'>web developer_&nbsp;</span>
+                <span className='bg-blue-600 text-white italic text-3xl font-Denike-Regular capitalize border-b border-white-900 text-bolder w-fit'>app developer_&nbsp;</span>
+            </div>
+            <div className='absolute right-5 bottom-5 md:bottom-20 lg:right-10'>
+                <img className='shape w-[150px]' src={shape2} />
+            </div>
+            <div className='hidden md:flex p-4 absolute w-full bottom-0 border-t border-blue-600 justify-end'>
+                <a className='ultra text-blue-600 mx-4 text-lg'>Trabajos</a>
+                <a className='ultra text-blue-600 mx-4 text-lg'>Experimentos</a>
+                <a className='ultra text-blue-600 mx-4 text-lg'>Acerca</a>
+            </div>
+        </div>
     );
 }
 

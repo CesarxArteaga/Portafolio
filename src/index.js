@@ -4,6 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+//fonts
+import './assets/fonts/Denike-Regular.ttf';
+import './assets/fonts/DenikeStandard-Regular.ttf';
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
